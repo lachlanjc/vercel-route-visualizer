@@ -1,32 +1,32 @@
+import { json } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
+import { useNavigate } from "react-router-dom";
+import { Dropdown } from "@nextui-org/react";
+import { useLoaderData } from "remix";
+
+interface Project {
+  id: string;
+  name: string;
+}
+
 export default function Index() {
+  const navigate = useNavigate();
+  const data = useLoaderData();
+  const { projects }: { projects: Array<Project> } = data;
+  console.log(data, projects);
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Dropdown
+    //   onSelectionChange={(value: string) =>
+    //     navigate(`/${value}`, { replace: true })
+    //   }
+    >
+      <Dropdown.Button flat>Project</Dropdown.Button>
+      <Dropdown.Menu aria-label="Projects">
+        {projects.map((project) => (
+          <Dropdown.Item key={project.id}>{project.name}</Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }

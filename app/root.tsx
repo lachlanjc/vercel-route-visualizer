@@ -4,12 +4,13 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import { NextUIProvider } from "@nextui-org/react";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Vercel Route Visualizer" };
 };
 
 export default function App() {
@@ -22,7 +23,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <NextUIProvider>
+          <Outlet />
+        </NextUIProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
