@@ -41,13 +41,24 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 type Files = { children: Array<Record<string, any>> }
 function transformFileTree(files: Files): Array<TreeFile> {
-  console.log(files)
+  console.log(JSON.stringify(files, null, 2))
   return (files.children ?? [])
     .filter(
-      (node) => !['404', '500', '_next'].includes(node.name.toLowerCase())
+      (node) =>
+        ![
+          '404',
+          '500',
+          '__NEXT',
+          '.png',
+          '.svg',
+          '.jpg',
+          '.gif',
+          '.webmanifest',
+          '.fallback',
+        ].includes(node.name)
     )
     .map((node) => {
-      debugger
+      //   debugger
       //   return {
       //     type: 'file' as 'file',
       //     name: node.name.toString() as string,
@@ -56,7 +67,7 @@ function transformFileTree(files: Files): Array<TreeFile> {
         return {
           name: node.name.toString() as string,
           type: 'directory' as 'directory',
-          children: [], // formatFiles(node as Files),
+          children: transformFileTree(node as Files),
         }
       } else {
         return {

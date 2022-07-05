@@ -1,12 +1,18 @@
-# Remix
+# Vercel Route Visualizer
 
-This is a [Remix](https://remix.run) project bootstrapped from the [official template](https://github.com/remix-run/remix/tree/main/packages/create-remix/templates/remix).
+This is a [Remix](https://remix.run) project for visualizing how the pages of your Vercel sites have evolved over time.
+It’s super early-days, with a bare-bones design and no real features. More to come!
 
-[Configuration](https://docs.codesandbox.io/our-products/codesandbox-projects/configuration-overview) has been added to optimize it for [CodeSandbox Projects](https://codesandbox.io/p/dashboard).
+![Screenshot of current version of project](https://user-images.githubusercontent.com/5074763/177408562-f2d38d71-c325-43bb-a750-ef1cb82b391e.png)
 
-## Commands
+## Getting started
+
+First, get a [token for your Vercel account](https://vercel.com/account/tokens), and set the `VERCEL_API_TOKEN` environment variable to it.
+
+Then, run `yarn` to install the dependencies.
 
 To start the dev server:
+
 ```
 yarn dev
 ```
@@ -14,13 +20,11 @@ yarn dev
 After you've started the dev server you can access it by going to [localhost:3000](http://localhost:3000).
 
 To build the app:
+
 ```
 yarn build
 ```
 
-## Resources
+---
 
-- [CodeSandbox Projects — Docs](https://docs.codesandbox.io)
-- [CodeSandbox — Discord](https://discord.gg/Ggarp3pX5H)
-- [Remix — GitHub](https://github.com/remix-run/remix)
-- [Remix — Docs](https://remix.run/docs/en/v1)
+Made by [@lachlanjc](https://lachlanjc.com), 2022. MIT License
