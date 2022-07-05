@@ -4,7 +4,7 @@
   "description": "",
   "license": "MIT",
   "dependencies": {
-    "@nextui-org/react": "^1.0.0-beta.9",
+    "@geist-ui/core": "^2.3.8",
     "@remix-run/react": "^1.6.3",
     "@remix-run/serve": "^1.6.3",
     "cross-env": "^7.0.3",

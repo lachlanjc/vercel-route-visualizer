@@ -5,13 +5,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "remix";
-import type { MetaFunction } from "remix";
-import { NextUIProvider } from "@nextui-org/react";
+} from 'remix'
+import type { MetaFunction } from 'remix'
+import { GeistProvider, CssBaseline } from '@geist-ui/core'
 
 export const meta: MetaFunction = () => {
-  return { title: "Vercel Route Visualizer" };
-};
+  return { title: 'Vercel Route Visualizer' }
+}
 
 export default function App() {
   return (
@@ -23,13 +23,14 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <NextUIProvider>
+        <GeistProvider>
+          <CssBaseline />
           <Outlet />
-        </NextUIProvider>
+        </GeistProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
-  );
+  )
 }

@@ -1,7 +1,7 @@
 import { json } from '@remix-run/node'
 import type { LoaderFunction } from '@remix-run/node'
 import { useNavigate } from 'react-router-dom'
-import { Dropdown } from '@nextui-org/react'
+import { Page, AutoComplete } from '@geist-ui/core'
 import { useLoaderData } from 'remix'
 
 interface Project {
@@ -29,21 +29,15 @@ export default function Index() {
   const { projects = [] }: { projects: Array<Project> } = data
 
   return (
-    <Dropdown>
-      <Dropdown.Button flat>Select a project…</Dropdown.Button>
-      <Dropdown.Menu
-        aria-label="Projects"
-        selectionMode="single"
-        selectedKeys={[projects[0].id]}
-        onSelectionChange={(key) =>
-          // @ts-expect-error set
-          navigate(`/${key.values().next().value}`, { replace: true })
+    <Page>
+      <AutoComplete
+        placeholder="Select a project…"
+        options={projects.map(({ id, name }) => ({ value: id, label: name }))}
+        onSelect={(project: string) =>
+          navigate(`/${project}`, { replace: false })
         }
-      >
-        {projects.map((project) => (
-          <Dropdown.Item key={project.id}>{project.name}</Dropdown.Item>
-        ))}
-      </Dropdown.Menu>
-    </Dropdown>
+        disableFreeSolo
+      />
+    </Page>
   )
 }

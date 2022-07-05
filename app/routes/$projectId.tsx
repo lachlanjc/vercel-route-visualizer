@@ -1,6 +1,6 @@
 import { json } from '@remix-run/node'
 import type { LoaderFunction } from '@remix-run/node'
-import { Text, Link, Container } from '@nextui-org/react'
+import { Text, Link, Card, Tree, Page } from '@geist-ui/core'
 import { useLoaderData } from 'remix'
 
 interface Project {
@@ -24,18 +24,16 @@ export default function ProjectPage() {
   const { project }: { project: Record<string, any> } = data
 
   return (
-    <Container>
-      <Text h1>{project.name}</Text>
+    <Page>
       <Link
         icon
         block
-        color="primary"
         href={`https://${project.targets.production.alias[0]}`}
         target="_blank"
       >
         {project.targets.production.alias[0]}
       </Link>
       <pre>{JSON.stringify(project, null, 2)}</pre>
-    </Container>
+    </Page>
   )
 }
